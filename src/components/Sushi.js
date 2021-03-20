@@ -35,7 +35,7 @@ function Sushi({
   return (
     <div className="sushi">
       <div className="plate" onClick={handleIsEatenClick}>
-        {isEaten || gone ? null : <img src={image} alt={name} width="100%" />}
+        {isEaten ? null : <img src={image} alt={name} width="100%" />}
       </div>
       <h4 className="sushi-details">
         {name} - ${price}

@@ -12,7 +12,7 @@ function Sushi({
   id,
 }) {
   const [isEaten, setIsEaten] = useState(gone);
-  console.log(name, gone, isEaten);
+
   useEffect(() => {
     fetch(`${api}/${id}`, {
       method: "PATCH",
@@ -22,7 +22,6 @@ function Sushi({
       },
       body: JSON.stringify({ isEaten }),
     });
-    console.log(isEaten);
   }, [isEaten]);
 
   function handleIsEatenClick() {
@@ -31,7 +30,6 @@ function Sushi({
       setWallet((w) => w - price);
       setNumEaten((n) => n + 1);
     }
-    console.log(isEaten);
   }
 
   return (

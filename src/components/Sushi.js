@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 
-function Sushi({ name, image, price, setWallet, wallet, setNumEaten, api }) {
-  const [isEaten, setIsEaten] = useState(false);
-
+function Sushi({
+  name,
+  image,
+  price,
+  gone,
+  setWallet,
+  wallet,
+  setNumEaten,
+  api,
+  id,
+}) {
+  const [isEaten, setIsEaten] = useState(gone);
+  console.log(name, gone, isEaten);
   useEffect(() => {
-    fetch(api, {
+    fetch(`${api}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -21,12 +31,13 @@ function Sushi({ name, image, price, setWallet, wallet, setNumEaten, api }) {
       setWallet((w) => w - price);
       setNumEaten((n) => n + 1);
     }
+    console.log(isEaten);
   }
 
   return (
     <div className="sushi">
       <div className="plate" onClick={handleIsEatenClick}>
-        {isEaten ? null : <img src={image} alt={name} width="100%" />}
+        {isEaten || gone ? null : <img src={image} alt={name} width="100%" />}
       </div>
       <h4 className="sushi-details">
         {name} - ${price}

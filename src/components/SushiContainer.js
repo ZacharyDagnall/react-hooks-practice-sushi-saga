@@ -22,9 +22,11 @@ function SushiContainer({ api, setWallet, wallet, setNumEaten }) {
     return (
       <Sushi
         key={sushi.id}
+        id={sushi.id}
         name={sushi.name}
         image={sushi.img_url}
         price={sushi.price}
+        gone={sushi.isEaten}
         setWallet={setWallet}
         wallet={wallet}
         setNumEaten={setNumEaten}
